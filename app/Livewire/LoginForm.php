@@ -16,7 +16,7 @@ class LoginForm extends Component
             return redirect()->route('home');
         }
 
-        $this->error = 'Invalid password';
+        $this->error = 'Falsches Passwort';
         $this->password = '';
     }
 

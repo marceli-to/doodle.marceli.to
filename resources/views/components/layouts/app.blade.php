@@ -27,7 +27,7 @@
 
         <footer class="border-t border-stone-200 bg-white">
             <div class="max-w-4xl mx-auto px-6 py-6 text-center">
-                <p class="text-sm text-stone-500 font-serif">Let's plan something great together.</p>
+                <p class="text-sm text-stone-500 font-serif">Lasst uns gemeinsam etwas Großartiges planen.</p>
             </div>
         </footer>
     </div>

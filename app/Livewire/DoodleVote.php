@@ -14,14 +14,14 @@ class DoodleVote extends Component
     public ?Vote $existingVote = null;
 
     public array $tripTypeOptions = [
-        'city' => 'City',
-        'villa' => 'Villa with pool',
+        'city' => 'Stadt',
+        'villa' => 'Villa mit Pool',
     ];
 
     public array $periodOptions = [
-        'late_spring' => 'Late spring',
-        'summer_holiday' => 'Summer holiday',
-        'early_fall' => 'Early fall',
+        'late_spring' => 'Frühsommer',
+        'summer_holiday' => 'Sommerferien',
+        'early_fall' => 'Spätsommer',
     ];
 
     public function mount()
@@ -50,11 +50,11 @@ class DoodleVote extends Component
             'tripTypes' => 'required|array|min:1',
             'periods' => 'required|array|min:1',
         ], [
-            'name.required' => 'Please enter your name.',
-            'tripTypes.required' => 'Please select at least one trip type.',
-            'tripTypes.min' => 'Please select at least one trip type.',
-            'periods.required' => 'Please select at least one period.',
-            'periods.min' => 'Please select at least one period.',
+            'name.required' => 'Bitte gib deinen Namen ein.',
+            'tripTypes.required' => 'Bitte wähle mindestens eine Reiseart.',
+            'tripTypes.min' => 'Bitte wähle mindestens eine Reiseart.',
+            'periods.required' => 'Bitte wähle mindestens einen Zeitraum.',
+            'periods.min' => 'Bitte wähle mindestens einen Zeitraum.',
         ]);
 
         if ($this->existingVote) {

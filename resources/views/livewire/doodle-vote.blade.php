@@ -2,19 +2,19 @@
     {{-- Voting Form --}}
     @if(!$hasVoted)
         <div class="bg-white rounded-2xl border border-stone-200 p-8">
-            <h2 class="text-2xl font-semibold text-stone-900 mb-2 font-serif">Cast your vote</h2>
-            <p class="text-stone-600 mb-8">Select all options that work for you.</p>
+            <h2 class="text-2xl font-semibold text-stone-900 mb-2 font-serif">Stimme abgeben</h2>
+            <p class="text-stone-600 mb-8">Alle passenden Optionen auswählen.</p>
 
             <form wire:submit="submitVote" class="space-y-8">
                 {{-- Name Input --}}
                 <div>
-                    <label for="name" class="block text-sm font-medium text-stone-700 mb-2">Your name</label>
+                    <label for="name" class="block text-sm font-medium text-stone-700 mb-2">Dein Name</label>
                     <input
                         type="text"
                         id="name"
                         wire:model="name"
                         class="w-full max-w-sm px-4 py-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-terracotta-500 focus:border-terracotta-500 transition-colors"
-                        placeholder="Enter your name"
+                        placeholder="Name eingeben"
                     >
                     @error('name')
                         <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
@@ -23,7 +23,7 @@
 
                 {{-- Trip Type Selection --}}
                 <div>
-                    <label class="block text-base font-medium text-stone-700 mb-4 font-serif">Type of trip</label>
+                    <label class="block text-base font-medium text-stone-700 mb-4 font-serif">Art der Reise</label>
                     <div class="flex flex-wrap gap-3">
                         @foreach($tripTypeOptions as $key => $label)
                             <label class="relative cursor-pointer">
@@ -46,7 +46,7 @@
 
                 {{-- Period Selection --}}
                 <div>
-                    <label class="block text-base font-medium text-stone-700 mb-4 font-serif">Period of the year</label>
+                    <label class="block text-base font-medium text-stone-700 mb-4 font-serif">Zeitraum</label>
                     <div class="flex flex-wrap gap-3">
                         @foreach($periodOptions as $key => $label)
                             <label class="relative cursor-pointer">
@@ -73,7 +73,7 @@
                         type="submit"
                         class="bg-terracotta-600 hover:bg-terracotta-700 text-white font-medium py-3 px-8 rounded-lg transition-colors"
                     >
-                        Submit vote
+                        Abstimmen
                     </button>
                 </div>
             </form>
@@ -83,14 +83,14 @@
         <div class="bg-terracotta-50 border border-terracotta-200 rounded-2xl p-8">
             <div class="flex items-start justify-between">
                 <div>
-                    <h2 class="text-xl font-semibold text-terracotta-900 mb-2 font-serif">Thanks, {{ $name }}!</h2>
-                    <p class="text-terracotta-700">Your vote has been recorded.</p>
+                    <h2 class="text-xl font-semibold text-terracotta-900 mb-2 font-serif">Danke, {{ $name }}!</h2>
+                    <p class="text-terracotta-700">Deine Stimme wurde gespeichert.</p>
                 </div>
                 <button
                     wire:click="editVote"
                     class="text-terracotta-600 hover:text-terracotta-800 text-sm font-medium underline"
                 >
-                    Edit vote
+                    Bearbeiten
                 </button>
             </div>
         </div>
@@ -98,14 +98,14 @@
 
     {{-- Live Results --}}
     <div class="bg-white rounded-2xl border border-stone-200 p-8">
-        <h2 class="text-2xl font-semibold text-stone-900 mb-2 font-serif">Results</h2>
-        <p class="text-stone-600 mb-8">{{ $results['total'] }} {{ Str::plural('vote', $results['total']) }} so far</p>
+        <h2 class="text-2xl font-semibold text-stone-900 mb-2 font-serif">Ergebnisse</h2>
+        <p class="text-stone-600 mb-8">{{ $results['total'] }} {{ $results['total'] === 1 ? 'Stimme' : 'Stimmen' }} bisher</p>
 
         @if($results['total'] > 0)
             <div class="space-y-10">
                 {{-- Trip Type Results --}}
                 <div>
-                    <h3 class="text-lg font-medium text-stone-800 mb-4 font-serif">Type of trip</h3>
+                    <h3 class="text-lg font-medium text-stone-800 mb-4 font-serif">Art der Reise</h3>
                     <div class="space-y-5">
                         @foreach($results['tripTypes'] as $key => $data)
                             <div>
@@ -126,7 +126,7 @@
 
                 {{-- Period Results --}}
                 <div>
-                    <h3 class="text-lg font-medium text-stone-800 mb-4 font-serif">Period of the year</h3>
+                    <h3 class="text-lg font-medium text-stone-800 mb-4 font-serif">Zeitraum</h3>
                     <div class="space-y-5">
                         @foreach($results['periods'] as $key => $data)
                             <div>
@@ -147,14 +147,14 @@
 
                 {{-- Individual Votes --}}
                 <div>
-                    <h3 class="text-lg font-medium text-stone-800 mb-4 font-serif">All votes</h3>
+                    <h3 class="text-lg font-medium text-stone-800 mb-4 font-serif">Alle Stimmen</h3>
                     <div class="overflow-x-auto">
                         <table class="w-full text-sm">
                             <thead>
                                 <tr class="border-b border-stone-200">
                                     <th class="text-left py-3 pr-4 font-medium text-stone-600 font-serif">Name</th>
-                                    <th class="text-left py-3 pr-4 font-medium text-stone-600 font-serif">Trip type</th>
-                                    <th class="text-left py-3 font-medium text-stone-600 font-serif">Period</th>
+                                    <th class="text-left py-3 pr-4 font-medium text-stone-600 font-serif">Art der Reise</th>
+                                    <th class="text-left py-3 font-medium text-stone-600 font-serif">Zeitraum</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -183,7 +183,7 @@
                 </div>
             </div>
         @else
-            <p class="text-stone-500 italic">No votes yet. Be the first to vote!</p>
+            <p class="text-stone-500 italic">Noch keine Stimmen. Sei der Erste!</p>
         @endif
     </div>
 </div>
