@@ -33,7 +33,7 @@
 
                 {{-- Trip Type Selection --}}
                 <div>
-                    <label class="block text-base font-medium text-stone-700 mb-4 font-serif">Art der Reise</label>
+                    <label class="block text-base font-medium text-stone-700 mb-4 font-serif">Ziel</label>
                     <div class="flex flex-wrap gap-3">
                         @foreach($tripTypeOptions as $key => $label)
                             <label class="relative cursor-pointer">
@@ -115,7 +115,7 @@
             <div class="space-y-10">
                 {{-- Trip Type Results --}}
                 <div>
-                    <h3 class="text-lg font-medium text-stone-800 mb-4 font-serif">Art der Reise</h3>
+                    <h3 class="text-lg font-medium text-stone-800 mb-4 font-serif">Ziel</h3>
                     <div class="space-y-5">
                         @foreach($results['tripTypes'] as $key => $data)
                             <div>
@@ -163,7 +163,7 @@
                             <thead>
                                 <tr class="border-b border-stone-200">
                                     <th class="text-left py-3 pr-3 md:pr-5 font-medium text-stone-600 font-serif">Name</th>
-                                    <th class="text-left py-3 pr-3 md:pr-5 font-medium text-stone-600 font-serif">Art der Reise</th>
+                                    <th class="text-left py-3 pr-3 md:pr-5 font-medium text-stone-600 font-serif">Ziel</th>
                                     <th class="text-left py-3 font-medium text-stone-600 font-serif">Zeitraum</th>
                                 </tr>
                             </thead>
@@ -179,10 +179,10 @@
                                                 {{ $vote->name }}
                                             </button>
                                         </td>
-                                        <td class="py-3 pr-3 md:pr-5 text-stone-600">
+                                        <td class="py-3 pr-3 md:pr-5 text-stone-600 align-top">
                                             {{ collect($vote->trip_types)->map(fn($t) => $tripTypeOptions[$t] ?? $t)->join(', ') }}
                                         </td>
-                                        <td class="py-3 text-stone-600">
+                                        <td class="py-3 text-stone-600 align-top">
                                             {{ collect($vote->periods)->map(fn($p) => $periodOptions[$p] ?? $p)->join(', ') }}
                                         </td>
                                     </tr>
