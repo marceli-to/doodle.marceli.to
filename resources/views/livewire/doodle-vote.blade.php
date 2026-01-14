@@ -1,7 +1,17 @@
 <div class="space-y-12" wire:poll.5s>
     {{-- Voting Form --}}
     @if(!$hasVoted)
-        <div class="bg-white rounded-2xl border border-stone-200 p-6 md:p-8">
+        <div class="bg-white rounded-2xl border border-stone-200 p-6 md:p-8 relative">
+            <button
+                wire:click="cancelVote"
+                type="button"
+                class="absolute top-4 right-4 md:top-6 md:right-6 text-stone-400 hover:text-stone-600 transition-colors cursor-pointer"
+                title="Schliessen"
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
             <h2 class="text-2xl font-semibold text-stone-900 mb-2 font-serif">Stimme abgeben</h2>
             <p class="text-stone-600 mb-8">Alle passenden Optionen auswählen.</p>
 
@@ -71,7 +81,7 @@
                 <div class="pt-4">
                     <button
                         type="submit"
-                        class="bg-terracotta-600 hover:bg-terracotta-700 text-white font-medium py-3 px-8 rounded-lg transition-colors"
+                        class="bg-terracotta-600 hover:bg-terracotta-700 text-white font-medium py-3 px-8 rounded-lg transition-colors cursor-pointer"
                     >
                         Abstimmen
                     </button>
@@ -88,7 +98,7 @@
                 </div>
                 <button
                     wire:click="editVote"
-                    class="text-terracotta-600 hover:text-terracotta-800 text-sm font-medium underline"
+                    class="text-terracotta-600 hover:text-terracotta-800 text-sm font-medium underline cursor-pointer"
                 >
                     Bearbeiten
                 </button>
@@ -164,7 +174,7 @@
                                             <button
                                                 wire:click="loadVote({{ $vote->id }})"
                                                 x-on:click="window.scrollTo({ top: 0, behavior: 'smooth' })"
-                                                class="text-stone-900 font-medium hover:text-terracotta-600 hover:underline transition-colors"
+                                                class="text-stone-900 font-medium hover:text-terracotta-600 hover:underline transition-colors cursor-pointer"
                                             >
                                                 {{ $vote->name }}
                                             </button>

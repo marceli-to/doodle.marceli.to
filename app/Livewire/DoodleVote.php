@@ -81,6 +81,11 @@ class DoodleVote extends Component
         $this->hasVoted = false;
     }
 
+    public function cancelVote()
+    {
+        $this->hasVoted = true;
+    }
+
     public function loadVote($voteId)
     {
         $vote = Vote::find($voteId);
