@@ -1,7 +1,7 @@
 <div class="space-y-12" wire:poll.5s>
     {{-- Voting Form --}}
     @if(!$hasVoted)
-        <div class="bg-white rounded-2xl border border-stone-200 p-8">
+        <div class="bg-white rounded-2xl border border-stone-200 p-6 md:p-8">
             <h2 class="text-2xl font-semibold text-stone-900 mb-2 font-serif">Stimme abgeben</h2>
             <p class="text-stone-600 mb-8">Alle passenden Optionen auswählen.</p>
 
@@ -80,7 +80,7 @@
         </div>
     @else
         {{-- Vote Confirmation --}}
-        <div class="bg-terracotta-50 border border-terracotta-200 rounded-2xl p-8">
+        <div class="bg-terracotta-50 border border-terracotta-200 rounded-2xl p-6 md:p-8">
             <div class="flex items-start justify-between">
                 <div>
                     <h2 class="text-xl font-semibold text-terracotta-900 mb-2 font-serif">Danke, {{ $name }}!</h2>
@@ -97,7 +97,7 @@
     @endif
 
     {{-- Live Results --}}
-    <div class="bg-white rounded-2xl border border-stone-200 p-8">
+    <div class="bg-white rounded-2xl border border-stone-200 p-6 md:p-8">
         <h2 class="text-2xl font-semibold text-stone-900 mb-2 font-serif">Ergebnisse</h2>
         <p class="text-stone-600 mb-8">{{ $results['total'] }} {{ $results['total'] === 1 ? 'Stimme' : 'Stimmen' }} bisher</p>
 
@@ -149,18 +149,18 @@
                 <div>
                     <h3 class="text-lg font-medium text-stone-800 mb-4 font-serif">Alle Stimmen</h3>
                     <div class="overflow-x-auto">
-                        <table class="w-full text-sm">
+                        <table class="w-full text-xs md:text-sm">
                             <thead>
                                 <tr class="border-b border-stone-200">
-                                    <th class="text-left py-3 pr-4 font-medium text-stone-600 font-serif">Name</th>
-                                    <th class="text-left py-3 pr-4 font-medium text-stone-600 font-serif">Art der Reise</th>
+                                    <th class="text-left py-3 pr-3 md:pr-5 font-medium text-stone-600 font-serif">Name</th>
+                                    <th class="text-left py-3 pr-3 md:pr-5 font-medium text-stone-600 font-serif">Art der Reise</th>
                                     <th class="text-left py-3 font-medium text-stone-600 font-serif">Zeitraum</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($results['votes'] as $vote)
                                     <tr class="border-b border-stone-100">
-                                        <td class="py-3 pr-4">
+                                        <td class="py-3 pr-3 md:pr-5 align-top">
                                             <button
                                                 wire:click="loadVote({{ $vote->id }})"
                                                 x-on:click="window.scrollTo({ top: 0, behavior: 'smooth' })"
@@ -169,7 +169,7 @@
                                                 {{ $vote->name }}
                                             </button>
                                         </td>
-                                        <td class="py-3 pr-4 text-stone-600">
+                                        <td class="py-3 pr-3 md:pr-5 text-stone-600">
                                             {{ collect($vote->trip_types)->map(fn($t) => $tripTypeOptions[$t] ?? $t)->join(', ') }}
                                         </td>
                                         <td class="py-3 text-stone-600">
