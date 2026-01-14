@@ -1,4 +1,4 @@
-<div class="space-y-12" wire:poll.5s>
+<div class="space-y-8 md:space-y-12" wire:poll.5s>
     {{-- Voting Form --}}
     @if(!$hasVoted)
         <div class="bg-white rounded-2xl border border-stone-200 p-6 md:p-8 relative">
